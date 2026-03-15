@@ -1,0 +1,49 @@
+================================================================
+  NIT Kurukshetra — Teacher Management System
+  START HERE — Follow these steps in ORDER
+================================================================
+
+STEP 1: Make sure MongoDB is running
+  - Open MongoDB Compass (it starts MongoDB automatically)
+  - OR run: mongod
+
+STEP 2: Open a terminal, go into the backend folder
+  cd backend
+  npm install
+  node server.js
+
+  You will see:
+    ✅ MongoDB Connected
+    Server  : http://localhost:5000
+    Seed DB : http://localhost:5000/api/auth/seed-db
+
+STEP 3: Seed the database — open this in your browser:
+  http://localhost:5000/api/auth/seed-db
+
+  You will see a green page saying "Database Seeded!"
+  with all login credentials.
+
+STEP 4: Open a NEW terminal, go into the frontend folder
+  cd frontend
+  npm install
+  npm start
+
+  Opens: http://localhost:3000
+
+STEP 5: Login
+  Admin:   admin@nitkkr.ac.in   password: admin123
+  Teacher: NIT-TCH-001          password: teach123
+  Teacher: NIT-TCH-002          password: teach123
+  (also works with email address)
+
+================================================================
+  IMPORTANT: Step 3 (seed-db URL) must be done ONCE after
+  each fresh install. This puts all the data in MongoDB.
+================================================================
+
+If port 5000 is busy:
+  Windows PowerShell (as Admin):
+    netstat -ano | findstr :5000
+    taskkill /F /PID <number shown>
+
+================================================================
