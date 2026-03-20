@@ -8,12 +8,24 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // const token = localStorage.getItem('token');
+    // const savedUser = localStorage.getItem('user');
+    // if (token && savedUser) {
+    //   setUser(JSON.parse(savedUser));
+    //   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    // }
     const token = localStorage.getItem('token');
-    const savedUser = localStorage.getItem('user');
-    if (token && savedUser) {
-      setUser(JSON.parse(savedUser));
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }
+const savedUser = localStorage.getItem('user');
+
+if (token && savedUser && savedUser !== "undefined") {
+  try {
+    setUser(JSON.parse(savedUser));
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } catch (error) {
+    console.error("Invalid user in localStorage");
+    localStorage.removeItem('user');
+  }
+}
     setLoading(false);
   }, []);
 
