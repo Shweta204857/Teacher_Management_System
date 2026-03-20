@@ -77,4 +77,4 @@ STEP 5: Refresh MongoDB Compass
     cd frontend
     npm start
 
-  Browser → http://localhost:3000
+  Browser → process.env.REACT_APP_API_URL

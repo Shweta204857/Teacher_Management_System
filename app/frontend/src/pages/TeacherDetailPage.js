@@ -67,7 +67,13 @@ const TeacherDetailPage = () => {
       <div className="profile-hero" style={{ marginBottom: 22 }}>
         <div className="profile-avatar">
           {teacher.photo
-            ? <img src={`http://localhost:5000${teacher.photo}`} alt={teacher.name} />
+            ?
+            //  <img src={`http://localhost:5000${teacher.photo}`} alt={teacher.name} />
+          <img
+  src={`${process.env.REACT_APP_API_URL}${teacher.photo}`}
+  alt={teacher.name}
+/>
+
             : <div style={{ width: 84, height: 84, borderRadius: '50%', background: 'rgba(108,99,255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 36, color: '#f0f0ff', fontWeight: 800 }}>
                 {teacher.name?.[0]?.toUpperCase()}
               </div>}

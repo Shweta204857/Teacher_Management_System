@@ -89,7 +89,13 @@ const ProfilePage = () => {
       <div className="profile-hero">
         <div className="profile-avatar">
           {profile?.photo
-            ? <img src={`http://localhost:5000${profile.photo}`} alt={user?.name} />
+            ? 
+            // <img src={`http://localhost:5000${profile.photo}`} alt={user?.name} />
+
+            <img
+  src={`${process.env.REACT_APP_API_URL}${profile.photo}`}
+  alt={user?.name}
+/>
             : (
               <div style={{
                 width: 84, height: 84, borderRadius: '50%',

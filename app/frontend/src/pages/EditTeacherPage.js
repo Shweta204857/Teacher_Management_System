@@ -122,9 +122,22 @@ const EditTeacherPage = () => {
         <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 16, color: '#f0f0ff' }}>📷 Profile Photo</div>
         <div className="photo-upload-wrap">
           <div className="photo-preview">
-            {preview
+            {/* {preview
               ? <img src={preview.startsWith('blob') ? preview : `http://localhost:5000${preview}`} alt="preview" />
-              : <span style={{ fontSize: 32 }}>👤</span>}
+              : <span style={{ fontSize: 32 }}>👤</span>} */}
+
+              {preview ? (
+  <img
+    src={
+      preview.startsWith('blob')
+        ? preview
+        : `${process.env.REACT_APP_API_URL}${preview}`
+    }
+    alt="preview"
+  />
+) : (
+  <span style={{ fontSize: 32 }}>👤</span>
+)}
           </div>
           <div>
             <input type="file" accept="image/*" id="photo-edit" style={{ display: 'none' }} onChange={handlePhoto} />

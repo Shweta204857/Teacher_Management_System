@@ -7,7 +7,17 @@ const Avatar = ({ name = '', size = 36, photo, index = 0 }) => {
   const color = COLORS[name.charCodeAt(0) % COLORS.length];
   return (
     <div className="avatar" style={{ width: size, height: size, background: photo ? 'transparent' : color, fontSize: size * 0.36 }}>
-      {photo ? <img src={photo.startsWith('http') ? photo : `http://localhost:5000${photo}`} alt={name} /> : initials}
+      {photo ? 
+      // <img src={photo.startsWith('http') ? photo : `http://localhost:5000${photo}`} alt={name} /> 
+      <img 
+  src={
+    photo.startsWith('http') 
+      ? photo 
+      : `${process.env.REACT_APP_API_URL}${photo}`
+  } 
+  alt={name} 
+/>
+      : initials}
     </div>
   );
 };
