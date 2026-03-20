@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+
 
   useEffect(() => {
     // const token = localStorage.getItem('token');
@@ -31,11 +33,18 @@ if (token && savedUser && savedUser !== "undefined") {
 
   const login = async (email, password, role) => {
     // const { data } = await axios.post('/api/auth/login', { email, password, role });
-     const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
-  email,
-  password,
-  role
-});
+//      const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
+//   email,
+//   password,
+//   role
+// });
+
+
+  const { data } = await axios.post('/api/auth/login', {
+      email,
+      password,
+      role
+    });
     localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data.user));
     axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
